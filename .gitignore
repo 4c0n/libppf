@@ -6,3 +6,4 @@ config.status
 libtool
 .deps
 *.swp
+Makefile.in
