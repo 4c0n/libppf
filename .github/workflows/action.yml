@@ -4,6 +4,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: ./docker-build.sh
+      - uses: actions/checkout@v2
+      - name: Build the Docker image
+        run: ./docker-build.sh
+      - uses: docker/build-push-action@v1
+      - name: Push the Docker image to Docker hub
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: 4c0n/libppf
+          tag_with_ref: true
